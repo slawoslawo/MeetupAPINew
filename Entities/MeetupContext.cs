@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Sqlite;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +9,11 @@ namespace MeetupAPINew.Entities
 {
  public class MeetupContext : DbContext
  {
-  private string _connectionString = "Server=(localdb)\\mssqllocaldb;Database=MeetupDb;Trusted_Connection=True;";
+  public MeetupContext(DbContextOptions options) : base(options)
+  {
+
+  }
+  //private string _connectionString = "Data source= mm.db";
 
   public DbSet<Meetup> Meetups { get; set; }
   public DbSet<Location> Locations { get; set; }
@@ -23,12 +28,13 @@ namespace MeetupAPINew.Entities
 
    modelBuilder.Entity<Meetup>()
        .HasMany(m => m.Lectures)
-       .WithOne(l => l.Meetup);
+       .WithOne(l => l.Meetup)
+       .HasForeignKey( l => l.MeetupId);
   }
 
-  protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-  {
-   optionsBuilder.UseSqlServer(_connectionString);
-  }
+  //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+  //{
+  // optionsBuilder.UseSqlite(_connectionString);
+  //}
  }
 }

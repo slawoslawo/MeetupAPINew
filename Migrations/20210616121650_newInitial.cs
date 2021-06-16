@@ -1,10 +1,9 @@
 ﻿using System;
-using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace MeetupAPINew.Migrations
 {
-    public partial class initial : Migration
+    public partial class newInitial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -13,7 +12,7 @@ namespace MeetupAPINew.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                        .Annotation("Sqlite:Autoincrement", true),
                     Name = table.Column<string>(nullable: true),
                     Organizer = table.Column<string>(nullable: true),
                     Date = table.Column<DateTime>(nullable: false),
@@ -29,7 +28,7 @@ namespace MeetupAPINew.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                        .Annotation("Sqlite:Autoincrement", true),
                     Author = table.Column<string>(nullable: true),
                     Topic = table.Column<string>(nullable: true),
                     Description = table.Column<string>(nullable: true),
@@ -51,7 +50,7 @@ namespace MeetupAPINew.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                        .Annotation("Sqlite:Autoincrement", true),
                     City = table.Column<string>(nullable: true),
                     Street = table.Column<string>(nullable: true),
                     PostCode = table.Column<string>(nullable: true),

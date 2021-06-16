@@ -13,6 +13,7 @@ namespace MeetupAPINew.Entities
   public string Description { get; set; }
 
   public virtual Meetup Meetup { get; set; }
+  
   public int MeetupId { get; set; }
  }
 }
