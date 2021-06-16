@@ -38,7 +38,7 @@ namespace MeetupAPINew.Controllers
     return NotFound();
    }
 
-   _logger.LogWarning($"Wykłady dla meetup {meetup.Name} zostały usunięte");
+   _logger.LogWarning($"Lectures for meetup {meetup.Name} were deleted");
 
    _meetupContext.Lectures.RemoveRange(meetup.Lectures);
    _meetupContext.SaveChanges();
